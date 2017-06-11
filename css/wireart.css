@@ -34,7 +34,7 @@ html ,body{
     position: relative;
     width: 100%;
     height: 90%;
-    background: url(../img/bg_bird3.jpg) no-repeat center center scroll;
+    background: url(../img/bg_bird.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
