@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link href="css/wireart.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset ="UTF-8">
+  <title>Togetherhoo</title>
+  
+  <style>
+    .center_text{
+	  text-align:center;
+	}
+	.center_img{
+	  margin:0 auto;
+	}
+	.justify_text{
+	  text-align:justify;
+	}
+  </style>
+  
+</head>
+
+
+<body>
+<div class="first_part">
+
+  <div class="nav_item">
+
+  <div class="topnav" id="myTopnav">
+
+      <a href="index.html">Home</a>
+
+      <a href="wireart.html">WireArt</a>
+
+      <a href="netlogo.html" style="background-color:RGB(47,47,56)">Netlogo</a>
+
+      <a href="webjs.html">Web</a>
+
+      <a href="gis.html">GIS</a>
+
+      <a href="javascript:void(0);" style="font-size:14px;" class="icon" onclick="responsive_navtap()">&#9776;</a>
+
+  </div>
+
+ </div>
+
+  <div id="center_title">
+    <h2>-Togetherhoo-</h2>
+	 <h3>GIS, ABM and Wire Art.</h3>
+  </div>
+
+</div>
+<!--End of first part-->
+
+<!--<div class="container" style="background-color:black;color:#f2f2f2;font-size:16px;">-->
+<div class="container" style="font-size:16px;">
+  <div class="row">
+    <div class="col-md-12">
+	  <h2 class="center_text">Public Space as a Driving Force</h2>
+	</div>
+	<div class="col-md-8 col-md-offset-2 col-xs-12 justify_text">
+	  Public Space is often an important driving force in the development of an urban. People have their houses built nearby a public space to enjoy the convinience it brings.  As there are more and more people gathered around, there are  probably  commerces  which  lead the place more prosper and people will keep gathering nearby. So a public space is important to an urban.
+	</div>
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_5.png">
+	</div>
+	<div class="col-md-12">
+      <h3 class="center_text">Netlogo Interface</h3>
+    </div>
+	<div class="col-md-8 col-md-offset-2 col-xs-12"> 
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_3.png">
+	</div>
+	<div class="col-md-12">
+      <h3 class="center_text">Rules</h3>
+    </div>
+	<div class="col-md-2 col-md-offset-2 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_6.png">
+	</div>
+	<div class="col-md-6 col-xs-12 justify_text">
+	  Here I divided the patches into three levels, which are public space( level1 ), larger buildings ( level2 ), smaller buildings ( level3 ). To produce level1, I just set  ( 0,0 ) as the left-buttom and  ( 4,4 ) as the right-top. But the production rules for level2 are more complicated, first, there are four areas where level2 patches could appear, those areas are A ,  B ,  C ,  D as shown on the graph on the left, and each area havs two possible rules to produce level2 patches.  Last ,  the rules for level3 is simpler than that for level 2 , here I just choose a neighboring patch that is neigther level1 nor level2 randomly , and set it as level3.
+	</div>
+	
+	<div class="col-md-12">
+	  <h4 class="center_text">Rules to produce Level 2</h4>
+	</div>
+	<div class="col-md-4 col-md-offset-2 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_7.png">
+	</div>
+	<div class="col-md-4 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_8.png">
+	</div>
+	
+	<div class="col-md-12">
+	  <h4 class="center_text">Rules to produce Level 3</h4>
+	</div>
+	<div class="col-md-4 col-md-offset-2 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_9.png">
+	</div>
+	<div class="col-md-4 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_10.png">
+	</div>
+	
+	<div class="col-md-12">
+	  <h3 class="center_text">Simulation Results</h3>
+	</div>
+	<div class="col-md-4 col-md-offset-2 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_11.png">
+	</div>
+	<div class="col-md-4 col-xs-12">
+	  <img class="img-responsive center_img" src="netlogo_img/public_space_12.png">
+	</div>
+	
+  </div>
+
+<section id="about_me">
+  
+  <!--about me的左邊-->
+  <div class="col-12"><h2 style="text-align:center;">About me</h2></div>
+  <div class="row">
+   <div class="col-md-4">
+    <img src="img/dfyre.bmp" class="img-circle img-responsive">
+    <h2 style="text-align:center">TOGETHERHOO</h2>
+   </div>
+   
+   <!--about me的右邊-->
+   <div class="col-md-8">
+   <!--
+    <h4>Togetherhoo is the name of the group of my childhood friends.</h4>
+    <h4>Expertise : GIS(Geographical Information System), Netlogo(Agent-based modeling), and making wire arts.</h4>
+    <h4>Just feel free to contact me.</h4>
+	-->
+	 <h4>Togetherhoo : </h4>
+	 <p>is the name of the group of my childhood friends.</p>
+   <!-- 
+	<h4>Expertise : </h4>
+	 <p><b>GIS</b>(Geographical Information System), <b>Netlogo</b>(Agent-based modeling), <b>Wire arts</b> and <b>Presentation</b>.</p>
+    <h4 style="color:rgb(0,98,132)">Just feel free to contact me.</h4>
+	-->
+	
+	<!--skill bar-->
+ <div class="skillset">
+   <h4>Expertise : </h4>
+   
+   <p>GIS</p>
+   <div class="skill_bar">
+     <div class="skills gis">
+       <p>90%</p>
+     </div>
+   </div>
+
+  <p>Netlogo</p>
+  <div class="skill_bar">
+     <div class="skills netlogo">
+      <p>85%</p>
+     </div>
+  </div>
+
+  <p>Wire Art</p>
+  <div class="skill_bar">
+    <div class="skills wire">
+      <p>95%</p>
+    </div>
+  </div>
+
+  <p>Presentation</p>
+  <div class="skill_bar">
+    <div class="skills Presentation">
+      <p>85%</p>
+    </div>
+  </div>
+
+  <p>HTML</p>
+  <div class="skill_bar">
+    <div class="skills html">
+      <p>70%</p>
+    </div>
+  </div>
+
+ </div>
+	
+	<!--skill bar-->
+	<h4>Just feel free to contact me.
+	<a id="fb" href="https://www.facebook.com/nbablissfully">
+	    <i class="fa fa-lg fa-facebook-official" aria-hidden="true"></i>
+	</a>	
+	<a href="mailto:nbablissfully@hotmail.com">
+	  <i class="fa fa-lg fa-envelope-o" aria-hidden="true"></i>
+	</a>
+	
+	</h4>
+	
+	
+   </div>
+   
+  </div>
+
+</section>
+  
+  
+</div>
+
+<script>
+function responsive_navtap() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link href="css/wireart.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset ="UTF-8">
+<title>Netlogo</title>
+
+<style>
+  .center_text{
+    text-align:center;
+  }
+  .center_img{
+    margin:0 auto;
+  }
+  .justify_text{
+    text-align:justify;
+  }
+  .table_container{
+    display:table;
+	width:100%;
+  }
+  .table_col{
+    display:table-cell;
+  }
+  @media only screen and (max-width: 600px) {
+    .table_col { 
+        display: block;
+        width: 100%;
+    }
+  }
+</style>
+
+</head>
+
+
+<body>
+
+<div class="first_part">
+<!--Navigation-->
+ 
+  <div class="nav_item">
+
+  <div class="topnav" id="myTopnav">
+
+      <a href="index.html">Home</a>
+
+      <a href="wireart.html">WireArt</a>
+
+      <a href="netlogo.html">Netlogo</a>
+
+      <a href="webjs.html">Web</a>
+
+      <a href="gis.html">GIS</a>
+
+      <a href="javascript:void(0);" style="font-size:14px;" class="icon" onclick="responsive_navtap()">&#9776;</a>
+
+  </div>
+
+ </div>
+  
+<!--End of Navigation-->
+
+  <div id="center_title">
+    <h2>-Togetherhoo-</h2>
+	 <h3>GIS, ABM and Wire Art.</h3>
+  </div>
+
+</div>
+<!--End of first part-->
+
+<div class="container">
+
+  <div class="col-md-12">
+	<h2 class="center_text">My Netlogo Works</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
+      <div class="table_container">
+        <div class="table_col">
+  	    <a href="netlogo_ca.html">
+            <img class="img-responsive center_img" src="netlogo_img/icons_ca.png">
+  		</a>
+        </div>
+		<div class="table_col">
+  	    <a href="netlogo_public_space.html">
+            <img class="img-responsive center_img" src="netlogo_img/icons-public_space.png">
+  		</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<section id="about_me">
+  
+  <!--about me的左邊-->
+  <div class="col-12"><h2 style="text-align:center;">About me</h2></div>
+  <div class="row">
+   <div class="col-md-4">
+    <img src="img/dfyre.bmp" class="img-circle img-responsive">
+    <h2 style="text-align:center">TOGETHERHOO</h2>
+   </div>
+   
+   <!--about me的右邊-->
+   <div class="col-md-8">
+	 <h4>Togetherhoo : </h4>
+	 <p>is the name of the group of my childhood friends.</p>
+	
+	<!--skill bar-->
+ <div class="skillset">
+   <h4>Expertise : </h4>
+   
+   <p>GIS</p>
+   <div class="skill_bar">
+     <div class="skills gis">
+       <p>90%</p>
+     </div>
+   </div>
+
+  <p>Netlogo</p>
+  <div class="skill_bar">
+     <div class="skills netlogo">
+      <p>85%</p>
+     </div>
+  </div>
+
+  <p>Wire Art</p>
+  <div class="skill_bar">
+    <div class="skills wire">
+      <p>95%</p>
+    </div>
+  </div>
+
+  <p>Presentation</p>
+  <div class="skill_bar">
+    <div class="skills Presentation">
+      <p>85%</p>
+    </div>
+  </div>
+
+  <p>HTML</p>
+  <div class="skill_bar">
+    <div class="skills html">
+      <p>70%</p>
+    </div>
+  </div>
+
+ </div>
+	
+	<!--skill bar-->
+	<h4>Just feel free to contact me.
+	<a id="fb" href="https://www.facebook.com/nbablissfully">
+	    <i class="fa fa-lg fa-facebook-official" aria-hidden="true"></i>
+	</a>	
+	<a href="mailto:nbablissfully@hotmail.com">
+	  <i class="fa fa-lg fa-envelope-o" aria-hidden="true"></i>
+	</a>
+	
+	</h4>
+	
+	
+   </div>
+   
+  </div>
+
+</section>
+
+</div>
+<!--End of container-->
+<script>
+function responsive_navtap() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+</body>
+
+
+</html>
