@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>興趣點數量計算</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+
+ <style>
+      *{
+	  font-family: Microsoft JhengHei;sans-serif;
+	  box-sizing:border-box;
+	  }
+      #map {
+       height: 85%;
+       width: 100%;
+	   padding:0px;
+	   margin:auto 0;
+      }
+	  
+	  html,body{
+	    height:100%;
+	  }
+	  .btn{
+		cursor:pointer;
+		font-family:Microsoft JhengHei;
+	  }
+	  .head-banner{
+	    background-color:#282c37;
+		color:white;
+	  }
+	  .instruction_label{
+	    font-weight:600;
+	  }
+
+ </style> 
+ 
+</head>
+ 
+
+ 
+<body>
+
+<div class="container-fluid" style="height:100%">
+  
+  <div class="row" style="height:100%">
+
+    <div class="col-md-12 head-banner" style="height:10%">
+       <label style="text-align:center">POI數量計算</label>
+    </div>
+	
+	<div class="col-md-10 col-xs-12" id="map">
+	</div>
+
+	<div class="col-md-2 col-xs-12">
+	   <p class="instruction_label">1. 於地圖上點選位置或輸入完整地址</p>
+	   <input id="addr_input" type="text" placeholder="例如台南市東區大學路1號"></input>
+	   <p id="no_addr_label" style="color:red"></p>
+	   <button id="addr_btn" class="btn btn-primary" onclick="addr_locate()">定位</button>
+	   
+	   <p class="instruction_label" style="margin-top:10px;">2. 查詢半徑(最多5000公尺):</p>
+	   <input id="ra" type="text" value="500"></input>
+
+	  <div>
+	    <button class="btn btn-primary" onclick="initMap()"> 
+	      查詢
+	    </button>
+	  </div>
+	  
+	</div>
+  </div>
+</div> 
+
+<script>
+
+var xcor = 121.545799;
+var ycor = 25.054681;
+var mrt = 0;
+var bus = 0;
+var bike = 0;
+var food = 0;
+var cates;
+var r = parseFloat(document.getElementById("ra").value);
+var markers = [];
+var ajax_status;
+
+function addr_locate(){
+  address = document.getElementById("addr_input").value;
+  a_baseurl = "https://gist-geo.motc.gov.tw/api/V2/Locator/AddressLocation/";
+  addr = address + "/geojson";
+  a_requrl = a_baseurl + addr;
+  
+  if (address != ""){
+     $.ajax(
+      {
+         url:a_requrl ,
+         async: false,
+         type:"GET",
+         dataType: "json",
+         success: function(Adata){
+           xcor = Adata.features[0].geometry.coordinates[0];
+		   ycor = Adata.features[0].geometry.coordinates[1];
+  		 },		
+         error:function(status){
+		   ajax_status = status.status;
+        },
+       });
+	   
+	   if (ajax_status == 404){
+	     $("#no_addr_label").text("");
+         $("#no_addr_label").append("查無地址或地址不完整!");
+		 ajax_status = 0;
+	   }
+	   else{
+	     var map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 14,
+               center: {lat: ycor, lng: xcor},
+               mapTypeId: 'terrain'
+             });
+		 
+	        var marker = new google.maps.Marker({
+              position: {lat: ycor, lng: xcor},
+              map:map
+            });
+	        $("#no_addr_label").text("");
+	        markers.push(marker);
+	        map.addListener('click', function(e) {
+              placeMarkerAndPanTo(e.latLng, map);
+	          bufferCircle.setMap(null);
+            });
+	   };
+  }
+  else{
+    $("#no_addr_label").text("");
+    $("#no_addr_label").append("請輸入完整地址!");
+  };
+};
+
+
+//////////////google map///////////////////
+
+ function initMap() {
+  
+  $("#no_addr_label").text("");
+  
+   var map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 14,
+     center: {lat: ycor, lng: xcor},
+     mapTypeId: 'terrain'
+   });
+   r = parseFloat(document.getElementById("ra").value);
+
+   base_url = "https://gist-geo.motc.gov.tw/api/V2/SpatialSearch/Poi/";
+   latlng = "[" + ycor + ", " + xcor + "]/";
+   ra = r + "/";
+   poi = "306,10100,10104,506/";
+   t = "geojson";
+   
+   requrl = base_url + latlng + ra + poi + t ;
+   
+   $.ajax(
+      {
+            url:requrl,
+            async: false,
+            type:"GET",
+            dataType: "json",
+            success: function(Adata){
+			console.log(Adata);
+  					l = Adata.features.length;
+  					for(i=0;i<l;i++){
+  					  cates = Adata.features[i].properties.Category;
+  					  switch (cates){
+  					    case 306:
+  					      mrt ++;
+  						  break;
+  					    case 10100:
+  					      bus++;
+  					      break;
+  					    case 10104:
+  					      bike++;
+  						  break;
+					case 506:
+					  food++;
+                         break;							  
+  					  };
+  					};
+       					
+  			     },
+  				 
+                error:function(){
+            },
+       });
+  
+     str = "<div style=" + "\"" + "background-color:RGB(233,233,235);font-size:14px;font-weight:500" + "\"" + ">"
+	      + "<div style=" + "\"" + "background-color:RGB(210,83,60);color:white;text-align:center;" + "\"" + ">查詢結果</div>"
+	      + "半徑" + r + "公尺內 : " + "</br>"
+          + "經過公車站牌數量: " + bus + "站" + "</br>" 
+          + "捷運站出入口數量: " + mrt + "處" + "</br>"
+   	      + "公共自行車站數量: " + bike + "站" + "</br>"
+	      + "</div>" ;
+	 
+  mrt = 0;
+  bus = 0;
+  bike = 0;
+  food = 0;
+
+   // Construct the circle for each value in citymap.
+   // Note: We scale the area of the circle based on the population.
+     // Add the circle for this city to the map.
+ var bufferCircle = new google.maps.Circle({
+       strokeColor: "RGB(210,83,60)",
+       strokeOpacity: 0.8,
+       strokeWeight: 2,
+       fillColor: "RGB(210,83,60)",
+       fillOpacity: 0.35,
+       map: map,
+       center: {lat: ycor, lng: xcor},
+	   radius: r
+ });
+  
+   var marker = new google.maps.Marker({
+       position: {lat: ycor, lng: xcor},
+       map: map						
+     });
+	 
+	 markers.push(marker);
+	 
+	 var infowindow = new google.maps.InfoWindow({
+          content: str
+        });
+     infowindow.open(map, marker);
+	 
+	 marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+	map.addListener('click', function(e) {
+      placeMarkerAndPanTo(e.latLng, map);
+	  if(bufferCircle.setMap){
+	    bufferCircle.setMap(null);
+	  };
+    });	
+ }
+	  
+  function placeMarkerAndPanTo(latLng, map) {   
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  xcor = latLng.lng();
+  ycor = latLng.lat();
+  markers.push(marker);
+  
+  if(markers.length>1){
+    for(m=0;m<markers.length-1;m++){
+	  markers[m].setMap(null);
+	};
+  };
+
+  }; 
+
+//////////////////////////////////////////////
+ 
+</script>
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+	
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW2R3JvnGX3WPGyv2NOH_TbprbOIFmBuc&libraries=visualization&callback=initMap">
+</script>
+
+</body>
+</html>

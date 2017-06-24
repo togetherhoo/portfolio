@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta charset="UTF-8"></meta>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.m_part{
+  max-width:200px;
+  margin:10 auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="m_part">
+<button class="btn btn-primary" onclick="get_question()">出題</button>
+<button class="btn btn-danger" onclick="show_answer()"> 顯示答案</button>
+<div>
+<input type="text" id="guess_ans" class="form-control"></input>
+<button class="btn btn-primary" onclick="guess()"> 送出答案</button>
+</div>
+<div id="answer"></div>
+<div id="show_answer"></div>
+</div>
+</body>
+
+<script>
+q_list = [];
+function get_question(){
+  q_list = [];
+  q_list_len = q_list.length;
+  $("#answer").text("");
+  $("#show_answer").text("");
+  for (i=0;q_list_len<4;i++){
+    var already_in = 'false';
+    var r = Math.round(Math.random()*9);
+    for (j=0;j<q_list_len;j++){
+      if (r == q_list[j]){
+          already_in = 'true';
+          };
+    };
+    if (already_in == 'false'){
+        q_list.push(r);
+      };
+    q_list_len = q_list.length;
+  };      
+  console.log(q_list)  
+};
+
+
+function guess(){
+  var a = 0;
+  var b = 0;
+  var g = document.getElementById("guess_ans");
+  var g1 = String(g.value).split("");
+  
+  for(i=0;i<4;i++){
+    for(j=0;j<4;j++){
+      if (q_list[i] == g1[j]){
+          if (i == j){
+              a++;
+          }
+          else
+            {
+              b++;
+            };
+          };
+    };
+  };
+  
+  if(a == 4){
+    str = "</br>" + g.value +  " IS RIGHT ANSWER ! YOU'RE SO SMART !"
+  }
+  else{
+    str = "</br>" + g.value + " : " + a + "A" + b + "B" ;    
+  };
+  $("#answer").append(str);
+  g.value = "";
+};
+
+function show_answer(){
+  $("#show_answer").text("");
+  $("#show_answer").append("答案是 : " );
+  $("#show_answer").append(q_list);
+};
+
+window.onload = function() {
+  get_question();
+};
+
+</script>
+
+</html>
