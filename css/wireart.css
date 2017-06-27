@@ -44,6 +44,15 @@ html ,body{
     -o-background-size: cover;
 }
 
+.sub_first_part{
+	  display: table;
+      position: relative;
+      width: 100%;
+      height: 30%;
+	  background-color:RGB(47,47,56);
+	  color:white;
+    }
+
 #center_title{
    margin-top:18%;
    text-align:center	
