@@ -260,3 +260,12 @@ li{
 	background-color: RGB(229,206,173);
 }
 /*--------------------------------*/
+.center_text{
+    text-align:center;
+  }
+  .center_img{
+    margin:0 auto;
+  }
+  .justify_text{
+    text-align:justify;
+  }
