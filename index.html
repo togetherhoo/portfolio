@@ -12,61 +12,7 @@
   <title>Togetherhoo</title>
   
   <style>
-    .contact_container  {
-	  display:table;
-	  width:100%;
-	}
-	.contact_col{
-	  display:table-cell;
-	  text-align:center;
-	}
 
-	.eaual_height_div{
-	  width:46%;
-	  height:60%;
-	  float:left;
-	  border:1px solid #ccc;
-	  box-shadow:0 2px 10px 0 rgba(0,0,0,0.12);
-	  margin-right:2%;
-	  margin-bottom:2%;
-	  top:50%;
-	  left:50%;
-	}
-	.equal_height_img{
-	  max-width:100%;
-	  max-height:80%;
-	  margin:0 auto;
-	  display:block;
-	}
-	.equal_height_img:hover{
-	  opacity:0.5;
-	}
-	@media(max-width:768px){
-	  .eaual_height_div{
-	    width:100%;
-		height:50%;
-	  }
-	}
-	
-	.flex_container{
-	  display:flex;
-	  display:-webkit-flex;
-	  display:-moz-flex;
-	  display:-ms-flex;
-	  width:100%;
-	}
-	.flex_item{
-	  -webkit-flex:1;
-	  -moz-flex:1;
-	  -ms-flex:1;
-	  border:1px solid #ccc;
-	  margin:5px 5px;
-	}
-	media(max-width:768px){
-	  .flex_item{
-	    width:100%;
-	  }
-	}
   </style>
   
 </head>
@@ -184,70 +130,45 @@
     <div class="col-12"><h2 style="text-align:center;">My Works</h2></div>
 	
 	<div class="flex_container">
-	
-	  <div class="flex_item">
-	    <h3 style="text-align:center;">Wire Art</h3>
-	    <a href="wireart.html">
-	     <img class="img-responsive" src="img/wireart_cover.png">
-	   </a>
+	  <div class="flex_item data-cates">    
+		  <h3 class="data-cates-title" style="text-align:center;">Wire Art</h3>
+		  <img class="img-responsive" src="img/wireart_cover.png">
+		  <div class="middle">
+		    <a id="data-cates-more" href="wireart.html">View More</a>
+		  </div>	    
 	  </div>
 	  
-	  <div class="flex_item">
-	    <h3 style="text-align:center;">Netlogo</h3>
-	    <a href="netlogo.html">
-	      <img class="img-responsive" src="img/netlogo_cover.png">
-        </a>
+	  <div class="flex_item data-cates">			 
+		  <h3 class="data-cates-title" style="text-align:center;">Netlogo</h3>
+		  <img class="img-responsive" src="img/netlogo_cover.png">
+		  <div class="middle">
+		    <a id="data-cates-more"  href="netlogo.html">View More</a>
+		  </div>					 
+	  </div>
+	</div>
+	
+	<div class="flex_container ">
+	  
+	  <div class="flex_item data-cates">
+	    <h3 class="data-cates-title" style="text-align:center;">Web Application</h3>
+		<img class="img-responsive" src="img/web_cover.png">
+		<div class="middle">
+		    <a id="data-cates-more"  href="webjs.html">View More</a>
+		</div>
+ 
 	  </div>
 	  
-	</div>
-	
-	<div class="flex_container">
-	  
-	  <div class="flex_item">
-	    <h3 style="text-align:center;">Web Application</h3>
-	    <a href="webjs.html">
-	      <img class="img-responsive" src="img/web_cover.png">
-        </a>
-	  </div>
-	  
-	  <div class="flex_item">
-	    <h3 style="text-align:center;">GIS</h3>
-	    <a href="gis.html">
-	      <img class="img-responsive" src="img/gis_cover.png">
-        </a>
+	  <div class="flex_item data-cates">
+	  <h3 class="data-cates-title" style="text-align:center;">GIS</h3>
+		<img class="img-responsive" src="img/gis_cover.png">
+		<div class="middle">
+		    <a id="data-cates-more"  href="gis.html">View More</a>
+		</div>
 	  </div>
 	  
 	  
 	</div>
-    <!--
-	<div class="eaual_height_div">
-      <h3 class="data-cates-title" style="text-align:center;">Wire Art</h3>
-	   <a href="wireart.html">
-	     <img class="equal_height_img" src="img/wireart_cover.png">
-	   </a>
-	</div>
-	
-	<div class="eaual_height_div">
-      <h3 class="data-cates-title" style="text-align:center;">Netlogo</h3>
-	  <a href="netlogo.html">
-	    <img class="equal_height_img" src="img/netlogo_cover.png">
-      </a>
-	</div>
-	
-	<div class="eaual_height_div">
-      <h3 class="data-cates-title" style="text-align:center;">Web Application</h3>
-	  <a href="webjs.html">
-	    <img class="equal_height_img" src="img/web_cover.png">
-      </a>
-	</div>
-	
-	<div class="eaual_height_div">
-      <h3 class="data-cates-title" style="text-align:center;">GIS</h3>
-	  <a href="gis.html">
-	    <img class="equal_height_img" src="img/gis_cover.png">
-      </a>
-	</div>
-	-->
+
 	
 <!--
 	<div class="row">
@@ -280,11 +201,7 @@
 			<div class="col-md-6 col-md-offset-3 col-xs-12">
 	             <div class="data-cates">
 				    
-					<h3 class="data-cates-title" style="text-align:center;">Web Application</h3>
-					<img class="img-responsive" src="img/web_cover.png">
-					<div class="middle">
-		                <a id="data-cates-more"  href="webjs.html">View More</a>
-					</div>
+					
 					
                  </div>
 	        </div>
