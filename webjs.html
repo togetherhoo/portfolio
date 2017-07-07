@@ -12,23 +12,6 @@
   <title>Togetherhoo</title>
   
   <style>
-    .web_works_container{
-	  display:table;
-	  width:100%;
-	}  
-	.web_works_col{
-	  display:table-cell;
-          margin-bottom:5px;
-	}
-	.web_works_col:hover{
-	  cursor:pointer;
-	}
-	@media screen and (max-width: 640px){
-	 .web_works_col{
-	    width:100%;
-		display:block;
-	  } 
-	}
   </style>
   
 </head>
@@ -71,103 +54,9 @@
 
 <section id="works">
     <div class="col-12"><h2 style="text-align:center;">My Web Application Works</h2></div>	
-	<!--
-	<div class="row">	
-	    	<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				 
-		            <h3 class="data-cates-title" style="text-align:center;">Cellular Autamata</h3>
-		            <img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more" href="jsweb/ca.html">View More</a>
-					</div>
-					
-				 </div>
-	        </div>
-			
-			<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">Taipei Ubike Map</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-					<div class="middle">
-		                <a id="data-cates-more"  href="jsweb/taipei_ubike.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-			<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				 
-				    <h3 class="data-cates-title" style="text-align:center;">Set RGB Interval</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="jsweb/RGB_interval.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-			<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">Set Opposite RGB Interval</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="jsweb/RGB_interval_2.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-	</div>
 	
-	<div class="row">
-	
-	    <div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">Card FliP Game</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="jsweb/card.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-			<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">Number Guess Game</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="jsweb/number_guessing.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-			<div class="col-md-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">POI counting</h3>
-					<img class="img-responsive" src="img/aging_ration97.PNG">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="jsweb/MOTC_test2.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
-			
-	</div>
-	-->
-	
-	<div class="web_works_container">
-	  <div class="web_works_col">
-	    <div class="data-cates">
-				    
+	<div class="flex_container">
+	  <div class="flex_item data-cates">				    
 		<h3 class="data-cates-title" style="text-align:center;">Card FliP Game</h3>
 		<div>A game written in javascript to help remember volcabularies.</div>
 		<a target="blank"  href="jsweb/card.html">View More</a>
@@ -175,13 +64,9 @@
 		<div class="middle">
 		    <a id="data-cates-more"  href="jsweb/card.html">View More</a>
 		</div>
-					
-         </div>
 	  </div>
 	  
-	  <div class="web_works_col">
-	    <div class="data-cates">
-				    
+	  <div class="flex_item data-cates">			    
 		<h3 class="data-cates-title" style="text-align:center;">Cellular Autamata</h3>
 		<div>This is inspired by the concept of cellular autamata(CA).</div>
 		<a target="blank" href="jsweb/ca.html">View More</a>
@@ -189,47 +74,34 @@
 		<div class="middle">
 		    <a id="data-cates-more"  href="jsweb/ca.html">View More</a>
 		</div>
-					
-        </div>
 	  </div>
 	  
-	  <div class="web_works_col">
-	    <div class="data-cates">	    
+	  <div class="flex_item data-cates">	    
 		  <h3 class="data-cates-title" style="text-align:center;">Number Guessing</h3>
 		  <div>This is the number guessing game, try to figure out the right number as soon as possible.</div>	
 		  <a target="blank" href="jsweb/number_guessing.html">View More</a>
-        </div>
 	  </div>
 	  
-	  <div class="web_works_col">
-	    <div class="data-cates">	    
+	  <div class="flex_item data-cates">	    
 		  <h3 class="data-cates-title" style="text-align:center;">Set gradient color</h3>
 		  <div>This one calculates the RGB value according to a simple math fomula.</div>	
 		  <a target="blank" href="jsweb/RGB_interval.html">View More</a>
-        </div>
 	  </div>
 	</div>
 	
-	<div class="web_works_container">
-	  <div class="web_works_col">
-	    <div class="data-cates">	    
+	<div class="flex_container">
+	  <div class="flex_item data-cates">    
 		  <h3 class="data-cates-title" style="text-align:center;">POI counting</h3>
 		  <div>This application counts how many points of interest(POI) are there within a specific buffer area.</div>	
 		  <a target="blank" href="jsweb/MOTC_test2.html">View More</a>
-        </div>
 	  </div>
-	  <div class="web_works_col">
-	    <div class="data-cates">	    
+	  <div class="flex_item data-cates">    
 		  <h3 class="data-cates-title" style="text-align:center;">Taipei ubike hot zones</h3>
 		  <div>It shows the amount of rentable and retunable of each ubike site in Taipei.</div>	
 		  <a target="blank" href="jsweb/taipei_ubike.html">View More</a>
-        </div>
 	  </div>
 	  </div>
-	</div>
-	
 </section>
-
 
 <section id="about_me">
   
@@ -304,7 +176,6 @@
   </div>
 
 </section>
-
 
 </div>
 <script>
