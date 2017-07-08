@@ -161,7 +161,7 @@ section{
 }
 
 .data-cates:hover{
-	box-shadow:0 8px 10px 0 rgba(0,0,0,0.12);
+	box-shadow:0 8px 10px 0 rgb(150,150,150);
 	z-index:1px;
 }
 
