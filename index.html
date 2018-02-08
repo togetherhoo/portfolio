@@ -1,264 +1,303 @@
 <!DOCTYPE html>
-
 <html>
-
-<head>
-  <link href="css/wireart.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--
+  Developer : 鍾佳霖
+  歡迎與我聯繫提供建議或討論 : 
+  https://www.facebook.com/nbablissfully
+  nbablissfully@hotmail.com
+  -->
+  <head>
+  <title>台灣地震分布圖</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta charset ="UTF-8">
-  <title>Togetherhoo</title>
-  
-  <style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+    <style>
+      #map {
+        height: 100%;
+		width:100%;
+		margin:0;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+	  .row .col-md-12,.col-md-4{
+	      padding:0;
+	  }
+	  h1{
+	      text-align: center;
+		  font-size:2.2em;
+	  }
+	  #timeSerial{
+	      z-index:1000;
+		  position:absolute;
+		  bottom:5px;
+		  //background-color:#111;
+		  //color:white;
+		  background-color:white;
+		  color:black;
+		  opacity:0.9;
+		  width:300px;
+		  left:50%;
+		  transform:translate(-150px,0);
+		  border-radius:5px;
+	  }
+	  .timeButton{
+	      background-color:#009688;
+		  color:white;
+		  font-family:Microsoft JhengHei;
+		  float:right;
+	  }
+	  .timeButton:hover{
+	      cursor:pointer;
+	  }
+	  .nav_title{
+	      height:20%;
+	  }
+	  #date{
+	      line-height:42px;
+		  margin:0 5px 0 5px;
+	  }
+	  #timePlaySVG{
+	      margin:2px 2px 2px 2px;
+		  float:left;
+	  }
+	  #timePlaySVG:hover{
+	      cursor:pointer;
+	  }
+	  #legendDiv{
+	      z-index:1000;
+		  position:absolute;
+		  bottom:60px;
+		  width:300px;
+		  left:50%;
+		  transform:translate(-150px,0);
+	  }
+	  #legendDivBack{
+	      z-index:999;
+		  position:absolute;
+		  bottom:60px;
+		  background-color:white;
+		  opacity:0.7;
+		  width:300px;
+		  height:60px;
+		  left:50%;
+		  transform:translate(-150px,0);
+	  }
+	  #grad1 {
+      float:left;
+      height: 18px;
+      width:120px;
+      margin-left:5px;
+      background: rgb(205,17,3);
+      background: linear-gradient(to right, rgb(205,17,3) , rgb(255,215,93));
+      }
+      #grad1>label{
+      //color:white;
+      }
+    </style>
+  </head>
+  <body>
 
-  </style>
-  
-</head>
-
-
-<body>
-<div class="first_part">
-
-  <div class="nav_item">
-
-  <div class="topnav" id="myTopnav">
-
-      <a href="index.html" class="focused_topnav_a" >Home</a>
-
-      <a href="wireart.html">WireArt</a>
-
-      <a href="netlogo.html">Netlogo</a>
-
-      <a href="webjs.html">Web</a>
-
-      <a href="gis.html">GIS</a>
-
-      <a href="javascript:void(0);" style="font-size:14px;" class="icon" onclick="responsive_navtap()">&#9776;</a>
-
-  </div>
-
- </div>
-<!--End of Navigation-->
-
-  <div id="center_title">
-    <h2>-Togetherhoo-</h2>
-	 <h3>GIS, ABM and Wire Art.</h3>
-  </div>
-
-</div>
-<!--End of first part-->
-
-<div class="container">
-
-<section id="about_me"> 
-  <!--about me的左邊-->
-  <div class="col-12"><h2 style="text-align:center;">About me</h2></div>
-  <div class="row">
-   <div class="col-md-4">
-    <img src="img/mypic.png" class="img-circle img-responsive">
-   </div>
-   
-   <!--about me的右邊-->
-   <div class="col-md-8">
-   <!--
-    <h4>Togetherhoo is the name of the group of my childhood friends.</h4>
-    <h4>Expertise : GIS(Geographical Information System), Netlogo(Agent-based modeling), and making wire arts.</h4>
-    <h4>Just feel free to contact me.</h4>
-	-->
-	 <h4>Togetherhoo : </h4>
-	 <p>is the name of the group of my childhood friends.</p>
-   <!-- 
-	<h4>Expertise : </h4>
-	 <p><b>GIS</b>(Geographical Information System), <b>Netlogo</b>(Agent-based modeling), <b>Wire arts</b> and <b>Presentation</b>.</p>
-    <h4 style="color:rgb(0,98,132)">Just feel free to contact me.</h4>
-	-->
-	
-	<!--skill bar-->
- <div class="skillset">
-   <h4>Expertise : </h4>
-   
-   <p>GIS</p>
-   <div class="skill_bar">
-     <div class="skills gis">
-       <p>90%</p>
-     </div>
-   </div>
-
-  <p>Netlogo</p>
-  <div class="skill_bar">
-     <div class="skills netlogo">
-      <p>85%</p>
-     </div>
-  </div>
-
-  <p>Wire Art</p>
-  <div class="skill_bar">
-    <div class="skills wire">
-      <p>95%</p>
-    </div>
-  </div>
-
-  <p>Presentation</p>
-  <div class="skill_bar">
-    <div class="skills Presentation">
-      <p>85%</p>
-    </div>
-  </div>
-
-  <p>HTML</p>
-  <div class="skill_bar">
-    <div class="skills html">
-      <p>70%</p>
-    </div>
-  </div>
-
- </div>
-	
-	<!--skill bar-->
-
-	
-	
-   </div>
-   
-  </div>
-
-</section>
-
-<section id="works">
-    <div class="col-12"><h2 style="text-align:center;">My Works</h2></div>
-	
-	<div class="flex_container">
-	  <div class="flex_item data-cates">    
-		  <h3 class="data-cates-title" style="text-align:center;">Wire Art</h3>
-		  <img class="img-responsive" src="img/wireart_cover.png">
-		  <div class="middle">
-		    <a id="data-cates-more" href="wireart.html">View More</a>
-		  </div>	    
-	  </div>
-	  
-	  <div class="flex_item data-cates">			 
-		  <h3 class="data-cates-title" style="text-align:center;">Netlogo</h3>
-		  <img class="img-responsive" src="img/netlogo_cover.png">
-		  <div class="middle">
-		    <a id="data-cates-more"  href="netlogo.html">View More</a>
-		  </div>					 
-	  </div>
-	</div>
-	
-	<div class="flex_container ">
-	  
-	  <div class="flex_item data-cates">
-	    <h3 class="data-cates-title" style="text-align:center;">Web Application</h3>
-		<img class="img-responsive" src="img/web_cover.png">
-		<div class="middle">
-		    <a id="data-cates-more"  href="webjs.html">View More</a>
-		</div>
- 
-	  </div>
-	  
-	  <div class="flex_item data-cates">
-	  <h3 class="data-cates-title" style="text-align:center;">GIS</h3>
-		<img class="img-responsive" src="img/gis_cover.png">
-		<div class="middle">
-		    <a id="data-cates-more"  href="gis.html">View More</a>
-		</div>
-	  </div>
-	  
-	  
-	</div>
-
-	
-<!--
-	<div class="row">
-	
-	    	<div class="col-md-6 col-md-offset-3 col-xs-12">
-	             <div class="data-cates">
-				    <h3 class="data-cates-title" style="text-align:center;">Wire Art</h3>
-		            <img class="img-responsive" src="img/wireart_cover.png">
-		            <div class="middle">
-					    <a id="data-cates-more" href="wireart.html">View More</a>
-					</div>
-					
-				 </div>
-	        </div>
+    <div class="row" style="height:100%;margin:0;">
+	    <div class="col-md-12 nav_title">
+		    <h1>Geodesign-Taipei</h1>
 			
-			<div class="col-md-6 col-md-offset-3 col-xs-12">
-	             <div class="data-cates">
-				 
-				    <h3 class="data-cates-title" style="text-align:center;">Netlogo</h3>
-					<img class="img-responsive" src="img/netlogo_cover.png">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="netlogo.html">View More</a>
-					</div>
-					
-                 </div>
-	        </div>
+			<div id="contact" style="width:300px; margin:0 auto;">
+			    <a style="width:120px; float:left;" class="btn btn-info" href="https://www.meetup.com/Geodesign-TPE-Meetup/" target="blank">meetup</a>
+			    <a style="width:120px; float:right;" class="btn btn-info" href="https://www.facebook.com/groups/geodesign.tpe/" target="blank">facebook</a>
+		    </div>
+			
+		</div>
+	    <div class="col-md-12" style="height:80%;">
+            <div id="map"></div>
+			
+			<div id="timeSerial">
+			    <svg id="timePlaySVG" onclick="playTime()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve" width="38px" height="38px">
+                    <path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M45.563,30.826l-22,15  C23.394,45.941,23.197,46,23,46c-0.16,0-0.321-0.038-0.467-0.116C22.205,45.711,22,45.371,22,45V15c0-0.371,0.205-0.711,0.533-0.884  c0.328-0.174,0.724-0.15,1.031,0.058l22,15C45.836,29.36,46,29.669,46,30S45.836,30.64,45.563,30.826z" fill="#009688"/>
+                </svg>
+			    <label id="date"></label><button class="btn timeButton" onclick="showAll()">顯示全部</button>
+		    </div>
+			
+			<div id="legendDiv">
+		
+		        <div style="width:100%;margin-left:50px">
+                <div style="float:left;">
+                震源深度:
+                </div>
+                <div id="grad1"><label>淺</label><label style="float:right;">深</label></div>
+                </div>
+                
+                <div style="width:100%;float:left;margin-left:50px">
+                芮氏規模:
+                <svg style="margin-top:5px;" height="19px" width="120px">
+                <g>
+                <text x="0" y="15">小</text>
+                <circle cx="25" cy="10" r="5" stroke="rgb(205,17,3)" stroke-width="1" fill="none" />
+                <circle cx="40" cy="10" r="6" stroke="rgb(205,17,3)" stroke-width="1" fill="none" />
+                <circle cx="60" cy="10" r="7" stroke="rgb(205,17,3)" stroke-width="" fill="none" />
+                <circle cx="80" cy="10" r="8.5" stroke="rgb(205,17,3)" stroke-width="1" fill="none" />
+                <text x="90" y="15">大</text>
+                </g>
+                </svg>
+                </div>
+		
+		    </div>
+			<div id="legendDivBack">
+			</div>
+			
+		</div>
+
 	</div>
 	
-	<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					
-					
-                 </div>
-	        </div>
-	
-			<div class="col-md-6 col-md-offset-3 col-xs-12">
-	             <div class="data-cates">
-				    
-					<h3 class="data-cates-title" style="text-align:center;">GIS</h3>
-					<img class="img-responsive" src="img/gis_cover.png">
-		            <div class="middle">
-					    <a id="data-cates-more"  href="gis.html">View More</a>
-					</div>
-                 </div>
-	        </div>
+	<div>
+
 	</div>
-	-->
-</section>
 
-<section id="contact">
+    <script>
+      var map;
+	  var infoWindowList = [];
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: 23, lng: 122},
+          mapTypeId: 'terrain',
+		  zoomControlOptions: {
+               position: google.maps.ControlPosition.RIGHT_CENTER
+          },
+          streetViewControlOptions: {
+              position: google.maps.ControlPosition.RIGHT_CENTER
+          }
+        });
 
-  <div class="row">
-    <div class="col-md-12">
-	  <h2 class="center_text">Contact Me</h2>
-	  <!--<img class="img-responsive center_img" style="max-height:500px;" src="img/ewrw.jpg">-->
-	</div>
+        var script = document.createElement('script');
+        script.src = 'https://togetherhoo.github.io/JS/Geodesign-TPE/FebEarthquack.js';
+		document.getElementsByTagName('head')[0].appendChild(script);
+
+        map.data.setStyle(function(feature) {
+          var magnitude = feature.getProperty('mag');
+		  var deepness = feature.getProperty('deep');
+          return {
+            icon: getCircle(magnitude,deepness)
+          };
+        });
+      }
+	  
+      function getCircle(magnitude,deepness) {
+	  var colors = d3.scale
+              .linear()
+              .domain([0,20])
+			  .range(['rgb(205,17,3)','rgb(255,215,93)']);
+		return {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: colors(deepness),
+		  fillOpacity: .7,
+          scale: Math.pow(2, magnitude) / 2,
+          strokeColor: 'white',
+          strokeWeight: .5,
+		  clickable:true
+        };
+      }
+	  
+      function eqfeed_callback(results) {
+        
+		map.data.addGeoJson(results);
+		map.data.addListener('click', function(event) {
+		    var context = "<div style='font-family:Microsoft JhengHei;font-size:1.2em'>";
+			context += '時間: ' + event.feature.getProperty('time') + "</br>";
+            context += '芮氏規模: ' + event.feature.getProperty('mag') + "</br>";
+			context += '震央深度: ' + event.feature.getProperty('deep') + " 公里</br>";
+			context += '震央位置: ' + event.feature.getProperty('center');
+			context += "</div>"
+			var infowindow = new google.maps.InfoWindow({
+                content: context
+            });
+			infoWindowList.push(infowindow);
+			if(infoWindowList.length>1){
+			    infoWindowList[0].close();
+				infoWindowList=[];
+				infoWindowList.push(infowindow);
+				infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+			}
+			else{
+			    infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+			}
+        });
+      }
+
+    //時序功能
+    var timeList = ["2月01日","2月02日","2月03日","2月04日","2月05日","2月06日","2月07日","2月08日"] ;    
+	var step = 0;
+	var pauseStep = 0;
+	var switchType = "play";
+	var clickTime = 0;
 	
-	<div class="col-md-12 center_text">
-	  <h3>If you have any ideas, and want to share with me.</h3>
-      <h3 style="color:RGB(210,83,60)">Just feel free to contact me.</h3>
-	</div>
+	var pauseIcon = '<rect x="7" y="6" style="fill:#009688;" width="38" height="38"/>';	
+	var playIcon = '<path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M45.563,30.826l-22,15  C23.394,45.941,23.197,46,23,46c-0.16,0-0.321-0.038-0.467-0.116C22.205,45.711,22,45.371,22,45V15c0-0.371,0.205-0.711,0.533-0.884  c0.328-0.174,0.724-0.15,1.031,0.058l22,15C45.836,29.36,46,29.669,46,30S45.836,30.64,45.563,30.826z" fill="#009688"/>';	
 	
-	
-	<div class="col-md-12">
-	  <div class="center_text">
-		<a target="blank" href="https://www.facebook.com/nbablissfully">
-	        <i class="fa fa-3x fa-facebook-official" aria-hidden="true"></i>
-	    </a>
-		<a target="blank" href="mailto:nbablissfully@hotmail.com">
-	      <i class="fa fa-3x fa-envelope-o" aria-hidden="true"></i>
-	    </a>
-	  </div>
-	</div>
-  </div>
-</section>
-
-</div>
-
-<script>
-function responsive_navtap() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-</script>
-</body>
-
+	function playTime(){
+	    
+		if(clickTime % 2 ==0){
+		    document.getElementById('date').innerHTML = "繪製中";
+			document.getElementById('timePlaySVG').innerHTML = pauseIcon;
+			switchType = "play";
+			clickTime += 1;
+	    }
+		else{
+		    document.getElementById('timePlaySVG').innerHTML = playIcon; 
+			switchType = "pause";
+			clickTime += 1;
+		}
+		console.log("switchType: ",switchType);
+		if(infoWindowList.length>=1){
+			    infoWindowList[0].close();
+				infoWindowList=[];
+			}
+	    var play = setInterval(frame,2000);
+        
+		function frame() {
+			  if(step>=timeList.length-1 || switchType =="pause"){
+				  clearInterval(play);
+			  }
+			  else{			  
+			      map.data.setStyle(function(feature) {
+					  magnitude = feature.getProperty('mag');
+		              deepness = feature.getProperty('deep');
+   					  var time = feature.getProperty('time').substring(0, 5);
+                          var dataVisable = false;
+			        	  if (time == timeList[step]){
+			        	      dataVisable = true;
+			        	  };
+						  document.getElementById('date').innerHTML = timeList[step];
+						  console.log("step: ",step,",time: ", time,",timeList[step]: ",timeList[step],",dataVisable: ",dataVisable);
+                          return {
+                            visible:dataVisable,
+							icon: getCircle(magnitude,deepness)
+                          };
+                      });
+			  }
+			  step = step + 1;
+        }
+	step = 0;
+	}
+	function showAll(){
+	    document.getElementById('date').innerHTML = "";
+	    map.data.setStyle(function(feature) {
+			 magnitude = feature.getProperty('mag');
+             deepness = feature.getProperty('deep');
+            return {
+                visible:true,
+			    icon: getCircle(magnitude,deepness)
+             };
+        });
+	}
+    </script>
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW2R3JvnGX3WPGyv2NOH_TbprbOIFmBuc&libraries=visualization&callback=initMap">
+    </script>
+  </body>
 </html>
